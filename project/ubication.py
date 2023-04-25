@@ -19,5 +19,5 @@ for i in range(len(df)):
                     df.loc[i:i, 'Ubicacion'] = ubicacion
                 break
 
-df.to_excel(r'C:\Users\JFROJAS\Desktop\PARSER\Thea/resultados.xlsx', index=False)
+df.to_excel('resultados.xlsx', index=False)
 

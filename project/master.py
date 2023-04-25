@@ -1,17 +1,17 @@
-from loadCaptura import file_path , master_path, nota
+#from loadCaptura import file_path , master_path, nota
 import re
 import pandas as pd
 
 # TEST : Nota
-#nota = 'THC-6104'
+nota = 'THC-6104'
 # TEST: df_parser
-#file_path = r'C:\Users\JFROJAS\Desktop\PARSER\Thea\Archivos\Captura Cliente Ejemplo.xlsx'
+file_path = r'C:\Users\JFROJAS\Desktop\PARSER\Thea\Archivos\Captura Cliente Ejemplo.xlsx'
 df = pd.read_excel(file_path)
 df_parser = df.iloc[:, [0, 1, 2, 3, 4, 5, 6, 7, 8]]
 
 
 # Master de clientes
-#master_path = r'C:\Users\JFROJAS\Desktop\PARSER\Thea\Archivos\Maestro de Clientes (5).xlsx'
+master_path = r'C:\Users\JFROJAS\Desktop\PARSER\Thea\Archivos\Maestro de Clientes (5).xlsx'
 df_master = pd.read_excel(master_path, header=6)
 df_master = df_master.iloc[:, [1, 3]]
 
