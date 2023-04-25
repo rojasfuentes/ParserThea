@@ -30,15 +30,15 @@ for i in range(len(df_parser)):
 
 for i in range(len(df_parser)):
     # Creando la columna "Nota" y asignando valores basados en el valor en la columna "Estatus Inventario"
-    estatus = df_parser.loc[i, 'Estatus Inventario']
     linea = df_parser.loc[i, 'Linea']
+    estatus = df_parser.loc[i, 'Estatus Inventario']
+    if linea == 1:
+        nota_numero += 1 # Agrega 1 al valor de nota_numero
     if 'Cuarentena' in estatus:
-        df_parser.loc[i, 'Nota'] = 'CUOT-' + nota_texto + str(nota_numero + 1)
+        df_parser.loc[i, 'Nota'] = 'COMP-' + nota_texto + str(nota_numero + 1)
     else:
         df_parser.loc[i, 'Nota'] = nota_texto + str(nota_numero + 1)
 
-    if linea == 1:
-        nota_numero += 1 # Agrega 1 al valor de nota_numero
 
 
 # Copiar la primera palabra de cada elemento en la columna 'Bill TO' , el primero aún tiene el guión
