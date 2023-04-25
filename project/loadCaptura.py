@@ -1,18 +1,36 @@
 import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
-import sys
+import PySimpleGUI as sg
 
-# Crea una ventana emergente para que el usuario seleccione el archivo
-root = tk.Tk()
-root.withdraw()
-file_path = filedialog.askopenfilename(title="Selecciona un archivo de Excel", filetypes=(("Archivo de Excel", "*.xlsx"),))
+# Define la ventana emergente
+layout = [[sg.Text('Ingresa la nota:'), sg.InputText()],[sg.Button('Ok')]]
 
-df = pd.read_excel(file_path, header=1)
-df_parser = df.iloc[:, [0, 1, 2, 3, 4, 6, 7, 8]]
+# Crea la ventana
+window = sg.Window('Ingresar nota', layout)
 
-print("Ultima nota:")
-nota= input()
+# Loop para leer los eventos y datos de entrada
+while True:
+    event, values = window.read()
+    if event == 'Ok':
+        nota = values[0]
+        break
+
+# Cierra la ventana
+window.close()
+
+# Imprime la nota ingresada
+print("Ultima nota:", nota)
+
+
+file_path = filedialog.askopenfilename(title="Selecciona 'Captura Cliente'", filetypes=(("Archivo de Excel", "*.xlsx"),))
+master_path = filedialog.askopenfilename(title="Selecciona Maestro de clientes", filetypes=(("Archivo de Excel", "*.xlsx"),))
+store_path = filedialog.askopenfilename(title="Selecciona Consulta Inventario", filetypes=(("Archivo de Excel", "*.xlsx"),))
+
+df = pd.read_excel(file_path)
+
+
+
 ## Crea una ventana emergente para que el usuario ingrese la primera nota
 #nota = ""
 #def get_nota():
